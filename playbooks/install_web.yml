@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+  - name: Update
+    become: yes
+    apt:
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+  - name: Install Apache2
+    become: yes
+    apt:
+      name: apache2
+      state: present
