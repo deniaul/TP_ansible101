@@ -6,8 +6,8 @@ git clone "https://github.com/mad97231/tp1_git" share
 
 echo "Suppression des contenaires existant"
 
-sudo docker kill $(sudo docker ps -a -q -f name="contenaire")
-sudo docker rm $(sudo docker ps -a -q -f name="contenaire")
+docker kill $(docker ps -a -q -f name="contenaire")
+docker rm $(docker ps -a -q -f name="contenaire")
 
 echo "Creation des builds"
 
