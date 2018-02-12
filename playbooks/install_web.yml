@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: publish
   tasks:
   - name: Update
     become: yes
@@ -11,3 +11,11 @@
     apt:
       name: apache2
       state: present
+    shell: cp -r /opt/code/html/ /var/www/
+    shell: service apache2 start
+
+  - name: Verification port 80
+    wait_for:
+      port: 80
+      delay: 10
+      msg: Fail apache2
