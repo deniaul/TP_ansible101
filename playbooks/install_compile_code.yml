@@ -1,0 +1,21 @@
+- hosts: compile
+  tasks:
+  - name: Update
+    become: yes
+    apt:
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+  - name: Install gcc
+    become: yes
+    apt:
+      name: gcc
+      state: present
+  - name: Lancement du build
+    shell: ./build.sh
+    args: 
+      chdir: /opt/code
+    register: output
+
+  - debug: var=output.stdout_lines
+
