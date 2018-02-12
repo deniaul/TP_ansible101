@@ -1,0 +1,8 @@
+---
+- hosts: execute
+  remote_user: control
+  
+  tasks:
+  - name: Execution of the code 
+    shell: ./a.bin
+ 
