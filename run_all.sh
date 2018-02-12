@@ -18,10 +18,10 @@ docker build -f publish_stat/Dockerfile -t publish_stat:v1 publish_stat/
 
 echo "Lancement des contenaires"
 
-docker run -d --name contenaire_compile compile_code:v1
-docker run -d --name contenaire_execute execute_code:v1
-docker run -d --name contenaire_git git_stat:v1
-docker run -d --name contenaire_publish publish_stat:v1
+docker run -d --name contenaire_compile -v `pwd`/share/code/:/opt/code compile_code:v1
+docker run -d --name contenaire_execute -v `pwd`/share/code/:/opt/code execute_code:v1
+docker run -d --name contenaire_git -v `pwd`/share/code/:/opt/code git_stat:v1 
+docker run -d --name contenaire_publish -v `pwd`/share/code/:/opt/code publish_stat:v1
 
 echo "Creation du fichier hosts_list"
 
@@ -33,10 +33,3 @@ echo "[git]" >> hosts_list
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' contenaire_git >> hosts_list
 echo "[publish]" >> hosts_list
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' contenaire_publish >> hosts_list
-
-
-#docker run --rm -ti --name compile_code -v 'pwd'share/code/:/opt/code compile_code:v1
-#docker run --rm -ti --name execute_code -v 'pwd'share/code/:/opt/code execute_code:v1
-#docker run --rm -ti --name git_stat -v 'pwd'share/code/:/opt/code git_stat:v1
-#docker run --rm -ti --name publish_stat -v 'pwd'share/code/:/opt/code publish_stat:v1
-
