@@ -7,6 +7,7 @@ ssh-add ansible
 echo "Clonage du repository git contenant le TP1"
 
 git clone "https://github.com/mad97231/tp1_git" share
+chmod 777 -R share/
 
 echo "Suppression des contenaires existant"
 
