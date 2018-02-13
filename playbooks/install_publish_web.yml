@@ -1,0 +1,13 @@
+---
+- hosts: publish
+  remote_user: control
+  
+  tasks:
+  - name: Install Gitstats
+    become: yes
+    apt:
+      name: gitstats
+      state: present
+
+  - name: Génération gitstats
+    shell: gitstats /opt/code/ /opt/code/html/

@@ -12,13 +12,17 @@
     apt:
       name: apache2
       state: present
-    
-  - name: Initilisation of the var file 
-    shell: cp -r /opt/code/html/ /var/www/
-    
-  - name: Starting apache services
-    shell: service apache2 start
 
+  - name: Copie rep. web
+    become: yes
+    shell: cp -r /opt/code/html/ /var/www/
+
+  - name: Démarrage apache2
+    become: yes
+    service:
+      name: apache2
+      state: started
+      
   - name: Verification port 80
     wait_for:
       port: 80
