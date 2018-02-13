@@ -6,5 +6,6 @@
   - name: Execution of the code 
     shell: /opt/code/a.bin
     register: result 
+    
   - debug:
       var: result

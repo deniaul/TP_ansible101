@@ -22,7 +22,7 @@
     service:
       name: apache2
       state: started
-
+      
   - name: Verification port 80
     wait_for:
       port: 80
