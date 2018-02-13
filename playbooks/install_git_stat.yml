@@ -1,0 +1,22 @@
+---
+- hosts: git
+  remote_user: control
+
+  tasks:
+  - name: Updates ...
+    become: yes
+    apt:
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+  - name: Install Gitstat ...
+    become: yes
+    apt: 
+      name: gitstats
+      state: present
+   
+  - name: Status generation ...
+    shell: gitstats /opt/code/code/ /opt/code/code/html/
+    
+  - name: Supression ...
+    shell: rm -rf tp1_git/  

@@ -1,4 +1,5 @@
 - hosts: publish
+  remote_user: control
   tasks:
   - name: Update
     become: yes
@@ -11,7 +12,11 @@
     apt:
       name: apache2
       state: present
+    
+  - name: Initilisation of the var file 
     shell: cp -r /opt/code/html/ /var/www/
+    
+  - name: Starting apache services
     shell: service apache2 start
 
   - name: Verification port 80
