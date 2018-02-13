@@ -23,10 +23,10 @@ docker build -f publish_stat/Dockerfile -t publish_stat:v1 publish_stat/
 
 echo "Lancement des contenaires"
 
-docker run -d --name contenaire_compile -v `pwd`/share/code/:/opt/code compile_code:v1
-docker run -d --name contenaire_execute -v `pwd`/share/code/:/opt/code execute_code:v1
-docker run -d --name contenaire_git -v `pwd`/share/code/:/opt/code git_stat:v1 
-docker run -d --name contenaire_publish -v `pwd`/share/code/:/opt/code publish_stat:v1
+docker run -d --name contenaire_compile -v `pwd`/share/:/opt/code compile_code:v1
+docker run -d --name contenaire_execute -v `pwd`/share/:/opt/code execute_code:v1
+docker run -d --name contenaire_git -v `pwd`/share/:/opt/code git_stat:v1 
+docker run -d --name contenaire_publish -v `pwd`/share/:/opt/code publish_stat:v1
 
 echo "Creation du fichier hosts_list"
 
