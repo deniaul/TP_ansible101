@@ -1,6 +1,7 @@
 # !/bin/bash
 
 echo "Ajout de la cle publique et privee pour l'utilisation de l'user control"
+chmod 600 ansible
 ssh-add ansible
 
 echo "Clonage du repository git contenant le TP1"
