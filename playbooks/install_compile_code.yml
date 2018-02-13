@@ -1,4 +1,5 @@
 - hosts: compile
+  remote_user: control
   tasks:
   - name: Update
     become: yes

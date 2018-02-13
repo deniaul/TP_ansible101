@@ -1,5 +1,8 @@
 # !/bin/bash
 
+echo "Ajout de la cle publique et privee pour l'utilisation de l'user control"
+ssh-add ansible
+
 echo "Clonage du repository git contenant le TP1"
 
 git clone "https://github.com/mad97231/tp1_git" share
