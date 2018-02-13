@@ -12,11 +12,9 @@
     apt:
       name: gcc
       state: present
+
   - name: Lancement du build
     shell: ./build.sh
     args: 
-      chdir: /opt/code/code
-    register: output
-
-  - debug: var=output.stdout_lines
+      chdir: /opt/code/
 

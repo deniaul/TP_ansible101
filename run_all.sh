@@ -31,6 +31,7 @@ docker run -d --name contenaire_publish -v `pwd`/share/:/opt publish_stat:v1
 
 echo "Creation du fichier hosts_list\n"
 
+rm -f hosts_list || true
 echo "[compile]" > hosts_list
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' contenaire_compile >> hosts_list
 echo "[execute]" >> hosts_list
