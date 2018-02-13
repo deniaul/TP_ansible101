@@ -4,5 +4,7 @@
   
   tasks:
   - name: Execution of the code 
-    shell: ./a.bin
- 
+    shell: /opt/code/a.bin
+    register: result 
+  - debug:
+      var: result

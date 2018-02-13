@@ -6,4 +6,6 @@ La création de containers Docker est automatisée et génère les différents f
 
 Pensez a rendre executable le run_all.sh
 
+Le site des statistiques est accessible à l'adresse du serveur web indiquée en fin d'exécution du scrip run_all.sh
+
 S'il y a des erreurs avec docker lancer le run_all.sh en mode root
