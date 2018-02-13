@@ -1,4 +1,5 @@
 - hosts: publish
+  remote_user: control
   tasks:
   - name: Update
     become: yes
@@ -11,7 +12,13 @@
     apt:
       name: apache2
       state: present
+
+  - name: Copie rep. web
+    become: yes
     shell: cp -r /opt/code/html/ /var/www/
+
+  - name: Démarrage apache2
+    become: yes
     shell: service apache2 start
 
   - name: Verification port 80
